@@ -1,0 +1,29 @@
+<section class="container mt-5 text-center">
+
+  @if (destino) {
+
+    <header>
+      <h2>{{ destino.nombre }}</h2>
+    </header>
+
+    <figure class="my-3">
+      <img 
+        [src]="destino.imagen" 
+        class="img-fluid"
+        alt="{{ destino.nombre }}"
+      >
+    </figure>
+
+    <article>
+      <p>{{ destino.descripcion }}</p>
+    </article>
+
+    <footer class="mt-3">
+      <button class="btn btn-warning">
+        Agregar a favoritos
+      </button>
+    </footer>
+
+  }
+
+</section>

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Destinos Turísticos</h2>
+
+  <div class="row">
+ @for (destino of destinos; track destino) {
+    <div class="col-md-4 mb-4">
+      <div class="card shadow">
+        <img [src]="destino.imagen" class="card-img-top" alt="Destino">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ destino.nombre }}</h5>
+          <p class="card-text">{{ destino.descripcion }}</p>
+
+          <button class="btn btn-success w-100"[routerLink]="['/destino', destino.id]">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+ }
+  </div>
+</div>
