@@ -1,1 +1,41 @@
-<p>favoritos works!</p>
+<section class="container mt-5">
+
+  <header class="text-center mb-4">
+    <h2>Mis Favoritos</h2>
+  </header>
+
+  @if (favoritos.length === 0) {
+    <p class="text-center">No tienes favoritos aún</p>
+  }
+
+  <div class="row">
+
+    @for (fav of favoritos; track fav.id) {
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+
+          <img 
+            [src]="fav.imagen" 
+            class="card-img-top"
+            alt="{{ fav.nombre }}"
+          >
+
+          <div class="card-body text-center">
+            <h5>{{ fav.nombre }}</h5>
+            <p>{{ fav.descripcion }}</p>
+
+            <button 
+              class="btn btn-danger w-100"
+              (click)="eliminar(fav.id)"
+            >
+              Eliminar
+            </button>
+          </div>
+
+        </div>
+      </div>
+    }
+
+  </div>
+
+</section>
