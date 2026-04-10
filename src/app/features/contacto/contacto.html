@@ -1,1 +1,33 @@
-<p>contacto works!</p>
+<div class="contact-container">
+  <h1>🌍 Planifica tu viaje</h1>
+  <p>Déjanos tus datos y te ayudamos a encontrar el mejor destino</p>
+
+  <form (ngSubmit)="enviarFormulario()" #form="ngForm">
+
+    <input 
+      type="text" 
+      name="nombre" 
+      [(ngModel)]="contacto.nombre" 
+      placeholder="Tu nombre"
+      required>
+
+    <input 
+      type="email" 
+      name="email" 
+      [(ngModel)]="contacto.email" 
+      placeholder="Tu correo"
+      required>
+
+    <textarea 
+      name="mensaje" 
+      [(ngModel)]="contacto.mensaje" 
+      placeholder="¿A dónde quieres viajar?"
+      required>
+    </textarea>
+
+    <button type="submit" [disabled]="form.invalid">
+      ✈️ Enviar solicitud
+    </button>
+
+  </form>
+</div>
