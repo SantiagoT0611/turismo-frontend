@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-destino',
@@ -9,27 +10,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './destino.html',
   styleUrl: './destino.css',
 })
-export class Destino {
+export class Destino implements OnInit {
 
-  destinos = [
-    {
-      id: 1,
-      nombre: 'Amazonas',
-      descripcion: 'Naturaleza y selva increíble',
-      imagen: 'https://wallpapers.com/images/featured/amazonas-8c3beryah6obx1a1.jpg'
-    },
-    {
-      id: 2,
-      nombre: 'Cartagena',
-      descripcion: 'Playas y ciudad histórica',
-      imagen: 'https://ca-times.brightspotcdn.com/dims4/default/694d0d7/2147483647/strip/false/crop/1515x1000+0+0/resize/1486x981!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fec%2F48%2F75fb9d684e1b9673520e911a8a3c%2Fun-destino-para-gozar-958578.JPG'
-    },
-    {
-      id: 3,
-      nombre: 'Eje cafetero',
-      descripcion: 'ejemplooo',
-      imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1tPvy-gZ-m5_VIFlkzAm84p_lkGbea9pfnA&s'
-    }
-  ];
+  destinos: any[] = [];
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+  this.http.get<any[]>('destinos.json')
+    .subscribe(data => {
+      this.destinos = data;
+    });
+  }
 }
+
